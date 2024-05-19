@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,9 +8,75 @@ datasource db {
 }
 
 model User {
-  id    String @id @default(uuid())
-  name  String
-  email String @unique
+  id            String   @id @default(uuid())
+  name          String
+  email         String   @unique
+  password_hash String
+  created_at    DateTime @default(now())
 
   @@map("users")
+}
+
+model Client {
+  id           String     @id @default(uuid())
+  personType   PersonType @default(CORPORATE)
+  document     String
+  name         String?
+  businessName String?
+  address      String?
+  email        String?
+  created_at   DateTime   @default(now())
+  Invoice      Invoice[]
+
+  @@map("clients")
+}
+
+model Invoice {
+  id                String      @id @default(uuid())
+  issueDate         DateTime
+  dueDate           DateTime
+  amount            Decimal
+  paymentType       PaymentType
+  installmentNumber Int?
+  invoiceNumber     String
+  referenceMonth    Int
+  paidOff           Boolean
+
+  client   Client @relation(fields: [clientId], references: [id])
+  clientId String
+
+  service     Service       @relation(fields: [serviceId], references: [id])
+  serviceId   String
+  installment installment[]
+
+  @@map("invoices")
+}
+
+model Service {
+  id          String    @id @default(uuid())
+  Description String
+  Invoice     Invoice[]
+
+  @@map("services")
+}
+
+model installment {
+  id                String   @id @default(uuid())
+  installmentNumber Int
+  amount            Decimal
+  dueDate           DateTime
+  paidoff           Boolean
+
+  invoice   Invoice @relation(fields: [invoiceId], references: [id])
+  invoiceId String
+}
+
+enum PersonType {
+  INDIVIDUAL
+  CORPORATE
+}
+
+enum PaymentType {
+  CASH
+  INSTALLMENT
 }
