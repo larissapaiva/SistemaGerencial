@@ -1,9 +1,3 @@
-/*
-  Warnings:
-
-  - Added the required column `password_hash` to the `users` table without a default value. This is not possible if the table is not empty.
-
-*/
 -- CreateEnum
 CREATE TYPE "PersonType" AS ENUM ('INDIVIDUAL', 'CORPORATE');
 
