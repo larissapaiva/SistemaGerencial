@@ -5,7 +5,7 @@ export class InMemoryUserRepository implements UsersRepository {
   public items: User[] = []
   async findByEmail(email: string) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const user = this.items.find((item) => this.item.email === email)
+    const user = this.items.find((item) => item.email === email)
     if (!user) {
       return null
     }
