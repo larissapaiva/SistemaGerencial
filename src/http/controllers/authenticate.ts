@@ -18,15 +18,15 @@ export async function authenticate(
     const usersRepository = new PrismaUsersRepository()
     const authenticateUseCase = new AuthenticateUseCase(usersRepository)
 
-    authenticateUseCase.execute({
+    await authenticateUseCase.execute({
       email,
       password,
     })
   } catch (err) {
     if (err instanceof InvalidCredentialsError) {
-      return reply.status(409).send({ message: err.message })
+      return reply.status(400).send({ message: err.message })
     }
     throw err
   }
-  return reply.status(201).send()
+  return reply.status(200).send()
 }
