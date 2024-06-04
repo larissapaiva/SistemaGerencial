@@ -1,147 +1,136 @@
-# Sistema Gerencial
+# Documentação do Sistema de Gerenciamento de Emissão de Notas Fiscais (NFs)
 
-Este repositório contém um projeto Node.js utilizando TypeScript, Prisma ORM, e Docker. Abaixo, você encontrará a estrutura do projeto e descrições de cada diretório e arquivo.
+## Visão Geral
 
-## Estrutura do Projeto
+O sistema de gerenciamento de emissão de notas fiscais (NFs) é uma plataforma que facilita a emissão, controle e acompanhamento de NFs. Este sistema permite a criação de usuários com diferentes níveis de permissão (Admin e Usuário Básico), a gestão de clientes, a criação de propostas e a categorização de clientes em PF, PJ e Offshore. Além disso, inclui um dashboard para monitoramento de saldo e inadimplência.
 
-```plaintext
-prisma
-|-- migrations
-|   |-- 20240518163226_
-|   |-- 20240519042702_create_relationships
-|   |-- migration_lock.toml
-|-- schema.prisma
-src
-|-- env
-|-- index.ts
-|-- http
-|   |-- controllers
-|   |   |-- register.ts
-|   |-- routes.ts
-|-- lib
-|   |-- prisma.ts
-|-- app.ts
-|-- server.ts
-.env
-.env.example
-.eslintignore
-.eslintrc.json
-.gitignore
-.npmrc
-docker-compose.yml
-package-lock.json
-package.json
-tsconfig.json
-```
+## Funcionalidades Principais
 
-### Diretórios e Arquivos
+### 1. Gestão de Usuários
+- **Tipos de Usuários:**
+  - **Admin:**
+    - Adicionar novas NFs.
+    - Cadastrar clientes na base.
+    - Criar propostas para emissão de NFs futuras.
+    - Cadastrar serviços oferecidos.
+  - **Usuário Básico:**
+    - Acesso restrito às funcionalidades básicas de visualização.
 
-#### `prisma/`
-Este diretório contém os arquivos relacionados ao Prisma ORM.
+### 2. Cadastro de Clientes
+- **Classificação de Clientes:**
+  - **Pessoa Física (PF):**
+    - Clientes individuais.
+  - **Pessoa Jurídica (PJ):**
+    - Empresas ou organizações.
+    - NFs emitidas para PJ terão valor acrescido de juros.
+  - **Offshore:**
+    - Clientes com sede fora do país.
 
-- **migrations/**: Diretório onde estão armazenadas as migrações do banco de dados.
-  - `20240518163226_`: Migration para criar a tabela usuário.
-  - `20240519042702_create_relationships`: Migration para criar todas as tabelas.
-  - `migration_lock.toml`: Arquivo que trava o estado das migrations.
+### 3. Emissão de Notas Fiscais (NFs)
+- **Admin:** Responsável por adicionar e gerenciar as NFs emitidas.
 
-- **schema.prisma**: Arquivo de esquema do Prisma, onde são definidas as modelos de dados e configurações do banco de dados.
+### 4. Propostas
+- **Criar Propostas:** Indicação de quando deve ser emitida a próxima NF para um cliente.
 
-#### `src/`
-Diretório principal do código-fonte do projeto.
+### 5. Serviços Oferecidos
+- **Cadastro de Serviços:** Lista de serviços que a empresa oferece, permitindo inclusão, edição e exclusão.
 
-- **env/**: Diretório destinado a arquivos relacionados ao ambiente da aplicação.
+### 6. Dashboard
+- **Informações Exibidas:**
+  - Saldo total previsto para entrar no mês.
+  - Lista de clientes inadimplentes.
+  - Saldo total recebido no mês.
 
-- **index.ts**: Ponto de entrada principal do aplicativo.
+## Estrutura do Sistema
 
-- **http/**: Diretório para componentes relacionados ao HTTP (controllers e rotas).
-  - **controllers/**: Diretório para os controladores da aplicação.
-    - `register.ts`: Controlador para registrar novos recursos.
-  - `routes.ts`: Arquivo contendo as definições das rotas da aplicação.
+### 1. Módulo de Usuários
+#### Funcionalidades
+- **Cadastro de Usuários:**
+  - Criar, editar e excluir usuários.
+  - Definir tipo de usuário (Admin ou Básico).
 
-- **lib/**: Diretório para bibliotecas e utilitários.
-  - `prisma.ts`: Arquivo de configuração e inicialização do Prisma Client.
+#### Campos
+- Nome
+- Email
+- Senha
+- Tipo de Usuário
 
-- `app.ts`: Arquivo de configuração principal da aplicação.
-- `server.ts`: Arquivo de inicialização do servidor.
+### 2. Módulo de Clientes
+#### Funcionalidades
+- **Cadastro de Clientes:**
+  - Adicionar novos clientes.
+  - Editar informações de clientes existentes.
+  - Classificação de clientes (PF, PJ, Offshore).
 
-#### Arquivos de Configuração
+#### Campos
+- Nome/Razão Social
+- CPF/CNPJ
+- Endereço
+- Tipo de Cliente (PF, PJ, Offshore)
+- Informações de Contato
 
-- **.env.example**: Arquivo de exemplo para variáveis de ambiente `.env` como referência.
+### 3. Módulo de Notas Fiscais
+#### Funcionalidades
+- **Emissão de NFs:**
+  - Adicionar novas NFs.
+  - Editar NFs emitidas.
+  - Aplicação automática de juros para clientes PJ.
 
-- **.eslintignore**: Arquivo de configuração do ESLint para ignorar arquivos e diretórios específicos.
-- **.eslintrc.json**: Arquivo de configuração do ESLint para padronização do código.
+#### Campos
+- Cliente
+- Serviço
+- Valor
+- Data de Emissão
+- Data de Vencimento
+- Juros (aplicável para PJ)
+- Status de Pagamento
 
-- **.gitignore**: Arquivo especificando quais arquivos e diretórios devem ser ignorados pelo Git.
+### 4. Módulo de Propostas
+#### Funcionalidades
+- **Criar Propostas:**
+  - Indicar data para próxima emissão de NF.
+  - Associar proposta a um cliente específico.
 
-- **.npmrc**: Arquivo de configuração do NPM.
+#### Campos
+- Cliente
+- Serviço
+- Data Proposta
+- Valor Proposto
 
-- **docker-compose.yml**: Arquivo de configuração do Docker Compose para orquestrar os serviços do contêiner Docker.
+### 5. Módulo de Serviços
+#### Funcionalidades
+- **Cadastro de Serviços:**
+  - Adicionar, editar e excluir serviços oferecidos.
 
-- **package-lock.json**: Arquivo de bloqueio do NPM que garante a instalação consistente das dependências.
-- **package.json**: Arquivo de configuração do NPM, incluindo dependências e scripts do projeto.
+#### Campos
+- Nome do Serviço
+- Descrição
+- Valor
 
-- **tsconfig.json**: Arquivo de configuração do TypeScript.
+### 6. Dashboard
+#### Funcionalidades
+- **Visualização de Dados:**
+  - Saldo total previsto para o mês.
+  - Lista de clientes inadimplentes.
+  - Saldo total recebido no mês.
 
-## Configuração do Projeto
+## Fluxo de Trabalho
 
-### Pré-requisitos
+1. **Criação de Usuário:** Admin cadastra novos usuários no sistema.
+2. **Cadastro de Cliente:** Admin adiciona novos clientes e classifica-os como PF, PJ ou Offshore.
+3. **Cadastro de Serviços:** Admin cadastra os serviços oferecidos pela empresa.
+4. **Criação de Propostas:** Admin cria propostas indicando quando as próximas NFs devem ser emitidas.
+5. **Emissão de NFs:** Admin emite NFs para os clientes, aplicando juros automáticos para PJ.
+6. **Monitoramento no Dashboard:** Admin e Usuários Básicos monitoram saldo previsto, clientes inadimplentes e saldo recebido no mês.
 
-- Node.js
-- Docker
-- Prisma CLI
+## Requisitos Técnicos
 
-### Instalação
+- **Backend:** API RESTful (ex: Node.js, Django, etc.)
+- **Frontend:** Interface Web Responsiva (ex: React, Angular, etc.)
+- **Banco de Dados:** Relacional (ex: PostgreSQL, MySQL) ou NoSQL (ex: MongoDB)
+- **Autenticação e Autorização:** JWT, OAuth ou similar
+- **Relatórios:** Geração de relatórios em PDF e Excel
 
-1. Clone o repositório:
-   ```bash
-   git clone <url-do-repositorio>
-   cd <nome-do-repositorio>
-   ```
+## Conclusão
 
-2. Instale as dependências:
-   ```bash
-   npm install
-   ```
-
-3. Configure as variáveis de ambiente:
-   - Renomeie o arquivo `.env.example` para `.env` e ajuste as variáveis conforme necessário.
-
-4. Configure o Docker:
-   ```bash
-   docker-compose up -d
-   ```
-
-5. Execute as migrações do Prisma:
-   ```bash
-   npx prisma migrate deploy
-   ```
-
-### Scripts NPM
-
-- **Iniciar o servidor**:
-  ```bash
-  npm run dev
-  ```
-
-- **Lint**:
-  ```bash
-  npm run lint
-  ```
-
-### Contribuição
-
-1. Fork o repositório.
-2. Crie uma branch com a nova feature ou correção de bug:
-   ```bash
-   git checkout -b minha-feature
-   ```
-3. Commit suas alterações:
-   ```bash
-   git commit -m 'Adiciona minha feature'
-   ```
-4. Envie para a branch principal:
-   ```bash
-   git push origin minha-feature
-   ```
-5. Abra um Pull Request.
-
+Este sistema é projetado para simplificar e automatizar o processo de emissão e gestão de NFs, proporcionando uma ferramenta eficiente para administradores e uma visão clara das finanças para todos os usuários envolvidos.
