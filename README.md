@@ -1,147 +1,103 @@
-# Sistema Gerencial
+# Documentação do Sistema de Gerenciamento de Emissão de Notas Fiscais (NFs)
 
-Este repositório contém um projeto Node.js utilizando TypeScript, Prisma ORM, e Docker. Abaixo, você encontrará a estrutura do projeto e descrições de cada diretório e arquivo.
+## Visão Geral
 
-## Estrutura do Projeto
+O sistema de gerenciamento de emissão de notas fiscais (NFs) é uma plataforma que facilita a emissão, controle e acompanhamento de NFs. Este sistema permite a criação de usuários com diferentes níveis de permissão (Admin e Usuário Básico), a gestão de clientes, a criação de propostas e a categorização de clientes em PF, PJ e Offshore. Além disso, inclui um dashboard para monitoramento de saldo e inadimplência.
 
-```plaintext
-prisma
-|-- migrations
-|   |-- 20240518163226_
-|   |-- 20240519042702_create_relationships
-|   |-- migration_lock.toml
-|-- schema.prisma
-src
-|-- env
-|-- index.ts
-|-- http
-|   |-- controllers
-|   |   |-- register.ts
-|   |-- routes.ts
-|-- lib
-|   |-- prisma.ts
-|-- app.ts
-|-- server.ts
-.env
-.env.example
-.eslintignore
-.eslintrc.json
-.gitignore
-.npmrc
-docker-compose.yml
-package-lock.json
-package.json
-tsconfig.json
-```
+## Requisitos Funcionais
 
-### Diretórios e Arquivos
+1. **Gestão de Usuários:**
+   - O sistema deve permitir o cadastro de novos usuários.
+   - O sistema deve permitir a edição e exclusão de usuários.
+   - O sistema deve permitir a autenticação de usuários com login e senha.
+   - O sistema deve diferenciar permissões entre usuários Admin e Usuário Básico.
 
-#### `prisma/`
-Este diretório contém os arquivos relacionados ao Prisma ORM.
+2. **Cadastro de Clientes:**
+   - O sistema deve permitir o cadastro de novos clientes.
+   - O sistema deve permitir a edição e exclusão de clientes.
+   - O sistema deve classificar clientes como PF, PJ ou Offshore.
 
-- **migrations/**: Diretório onde estão armazenadas as migrações do banco de dados.
-  - `20240518163226_`: Migration para criar a tabela usuário.
-  - `20240519042702_create_relationships`: Migration para criar todas as tabelas.
-  - `migration_lock.toml`: Arquivo que trava o estado das migrations.
+3. **Emissão de Notas Fiscais:**
+   - O sistema deve permitir a emissão de novas NFs pelo Admin.
+   - O sistema deve permitir a edição e exclusão de NFs.
+   - O sistema deve aplicar juros automaticamente para clientes PJ.
+   - O sistema deve gerar relatórios de NFs emitidas.
 
-- **schema.prisma**: Arquivo de esquema do Prisma, onde são definidas as modelos de dados e configurações do banco de dados.
+4. **Propostas:**
+   - O sistema deve permitir a criação de novas propostas.
+   - O sistema deve permitir a edição e exclusão de propostas.
+   - O sistema deve associar propostas a clientes específicos.
 
-#### `src/`
-Diretório principal do código-fonte do projeto.
+5. **Serviços Oferecidos:**
+   - O sistema deve permitir o cadastro de novos serviços.
+   - O sistema deve permitir a edição e exclusão de serviços.
 
-- **env/**: Diretório destinado a arquivos relacionados ao ambiente da aplicação.
+6. **Dashboard:**
+   - O sistema deve mostrar o saldo total previsto para o mês.
+   - O sistema deve listar clientes inadimplentes.
+   - O sistema deve mostrar o saldo total recebido no mês.
+   - O sistema deve gerar gráficos e relatórios visuais.
 
-- **index.ts**: Ponto de entrada principal do aplicativo.
+## Requisitos Não-Funcionais
 
-- **http/**: Diretório para componentes relacionados ao HTTP (controllers e rotas).
-  - **controllers/**: Diretório para os controladores da aplicação.
-    - `register.ts`: Controlador para registrar novos recursos.
-  - `routes.ts`: Arquivo contendo as definições das rotas da aplicação.
+1. **Desempenho:**
+   - O sistema deve ser capaz de processar e responder às solicitações em menos de 2 segundos.
+   - O sistema deve suportar até 1000 usuários simultâneos sem degradação de desempenho.
 
-- **lib/**: Diretório para bibliotecas e utilitários.
-  - `prisma.ts`: Arquivo de configuração e inicialização do Prisma Client.
+2. **Segurança:**
+   - O sistema deve utilizar criptografia para armazenar senhas de usuários.
+   - O sistema deve utilizar HTTPS para todas as comunicações.
+   - O sistema deve implementar controle de acesso baseado em roles (RBAC).
 
-- `app.ts`: Arquivo de configuração principal da aplicação.
-- `server.ts`: Arquivo de inicialização do servidor.
+3. **Usabilidade:**
+   - O sistema deve ter uma interface intuitiva e fácil de usar.
+   - O sistema deve ser acessível em dispositivos móveis e desktops.
+   - O sistema deve seguir as diretrizes de acessibilidade web (WCAG 2.1).
 
-#### Arquivos de Configuração
+4. **Manutenibilidade:**
+   - O sistema deve ser modular e fácil de manter.
+   - O sistema deve ter documentação de código e API detalhada.
 
-- **.env.example**: Arquivo de exemplo para variáveis de ambiente `.env` como referência.
+5. **Disponibilidade:**
+   - O sistema deve estar disponível 99,9% do tempo, exceto em períodos de manutenção programada.
+   - O sistema deve ter backup diário automático.
 
-- **.eslintignore**: Arquivo de configuração do ESLint para ignorar arquivos e diretórios específicos.
-- **.eslintrc.json**: Arquivo de configuração do ESLint para padronização do código.
+6. **Compatibilidade:**
+   - O sistema deve ser compatível com os principais navegadores (Chrome, Firefox, Safari, Edge).
+   - O sistema deve funcionar em diferentes sistemas operacionais (Windows, macOS, Linux).
 
-- **.gitignore**: Arquivo especificando quais arquivos e diretórios devem ser ignorados pelo Git.
+## Regras de Negócio
 
-- **.npmrc**: Arquivo de configuração do NPM.
+1. **Cadastro de Usuários:**
+   - Apenas Admins podem cadastrar novos usuários.
+   - Usuários não podem se autogerenciar em termos de permissão (ex: um Usuário Básico não pode se promover a Admin).
 
-- **docker-compose.yml**: Arquivo de configuração do Docker Compose para orquestrar os serviços do contêiner Docker.
+2. **Classificação de Clientes:**
+   - Clientes PJ devem ter CNPJ válido.
+   - Clientes PF devem ter CPF válido.
+   - Clientes Offshore não precisam de CPF/CNPJ, mas devem ter uma identificação válida.
 
-- **package-lock.json**: Arquivo de bloqueio do NPM que garante a instalação consistente das dependências.
-- **package.json**: Arquivo de configuração do NPM, incluindo dependências e scripts do projeto.
+3. **Emissão de Notas Fiscais:**
+   - NFs emitidas para clientes PJ devem incluir um acréscimo de juros conforme definido nas configurações do sistema.
+   - NFs não podem ser emitidas para clientes inadimplentes até que todas as pendências sejam resolvidas.
 
-- **tsconfig.json**: Arquivo de configuração do TypeScript.
+4. **Propostas:**
+   - Propostas devem ter uma data de emissão futura especificada.
+   - Propostas podem ser convertidas automaticamente em NFs na data especificada, se configurado.
 
-## Configuração do Projeto
+5. **Serviços Oferecidos:**
+   - Cada serviço deve ter um nome e uma descrição única.
+   - O valor do serviço deve ser especificado e pode ser editado conforme necessário.
 
-### Pré-requisitos
+6. **Dashboard:**
+   - O saldo total previsto deve ser calculado com base nas NFs emitidas e propostas aprovadas.
+   - A lista de clientes inadimplentes deve ser atualizada em tempo real com base nos pagamentos recebidos.
+   - O saldo total recebido deve ser atualizado diariamente.
 
-- Node.js
-- Docker
-- Prisma CLI
+## Requisitos Técnicos
 
-### Instalação
-
-1. Clone o repositório:
-   ```bash
-   git clone <url-do-repositorio>
-   cd <nome-do-repositorio>
-   ```
-
-2. Instale as dependências:
-   ```bash
-   npm install
-   ```
-
-3. Configure as variáveis de ambiente:
-   - Renomeie o arquivo `.env.example` para `.env` e ajuste as variáveis conforme necessário.
-
-4. Configure o Docker:
-   ```bash
-   docker-compose up -d
-   ```
-
-5. Execute as migrações do Prisma:
-   ```bash
-   npx prisma migrate deploy
-   ```
-
-### Scripts NPM
-
-- **Iniciar o servidor**:
-  ```bash
-  npm run dev
-  ```
-
-- **Lint**:
-  ```bash
-  npm run lint
-  ```
-
-### Contribuição
-
-1. Fork o repositório.
-2. Crie uma branch com a nova feature ou correção de bug:
-   ```bash
-   git checkout -b minha-feature
-   ```
-3. Commit suas alterações:
-   ```bash
-   git commit -m 'Adiciona minha feature'
-   ```
-4. Envie para a branch principal:
-   ```bash
-   git push origin minha-feature
-   ```
-5. Abra um Pull Request.
-
+- **Backend:** API RESTful (Node.js)
+- **Frontend:** Interface Web Responsiva (React)
+- **Banco de Dados:** Relacional (PostgreSQL)
+- **Autenticação e Autorização:** JWT
+- **Relatórios:** Geração de relatórios em PDF e Excel
