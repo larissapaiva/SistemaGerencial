@@ -86,8 +86,7 @@ O sistema de gerenciamento de emissão de notas fiscais (NFs) é uma plataforma 
    - Propostas podem ser convertidas automaticamente em NFs na data especificada, se configurado.
 
 5. **Serviços Oferecidos:**
-   - Cada serviço deve ter um nome e uma descrição única.
-   - O valor do serviço deve ser especificado e pode ser editado conforme necessário.
+   - Cada serviço deve ter um nome.
 
 6. **Dashboard:**
    - O saldo total previsto deve ser calculado com base nas NFs emitidas e propostas aprovadas.
