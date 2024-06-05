@@ -4,58 +4,6 @@
 
 O sistema de gerenciamento de emissão de notas fiscais (NFs) é uma plataforma que facilita a emissão, controle e acompanhamento de NFs. Este sistema permite a criação de usuários com diferentes níveis de permissão (Admin e Usuário Básico), a gestão de clientes, a criação de propostas e a categorização de clientes em PF, PJ e Offshore. Além disso, inclui um dashboard para monitoramento de saldo e inadimplência.
 
-# Documentação do Sistema de Gerenciamento de Emissão de Notas Fiscais (NFs)
-
-## Funcionalidades
-
-### 1. Gestão de Usuários
-#### Funcionalidades
-- **Cadastro de Usuários:**
-  - Criar novos usuários com diferentes níveis de permissão (Admin, Usuário Básico).
-  - Editar informações de usuários existentes.
-  - Excluir usuários.
-  - Login e autenticação segura.
-
-### 2. Cadastro de Clientes
-#### Funcionalidades
-- **Cadastro de Clientes:**
-  - Adicionar novos clientes (PF, PJ, Offshore).
-  - Editar informações de clientes existentes.
-  - Excluir clientes.
-  - Classificar clientes como PF, PJ ou Offshore.
-
-### 3. Emissão de Notas Fiscais (NFs)
-#### Funcionalidades
-- **Emissão de NFs:**
-  - Adicionar novas NFs.
-  - Editar NFs emitidas.
-  - Excluir NFs.
-  - Aplicação automática de juros para clientes PJ.
-  - Gerar relatório de NFs emitidas.
-
-### 4. Propostas
-#### Funcionalidades
-- **Criar Propostas:**
-  - Adicionar propostas indicando quando emitir a próxima NF.
-  - Editar propostas existentes.
-  - Excluir propostas.
-  - Associar propostas a clientes específicos.
-
-### 5. Serviços Oferecidos
-#### Funcionalidades
-- **Cadastro de Serviços:**
-  - Adicionar novos serviços oferecidos.
-  - Editar serviços existentes.
-  - Excluir serviços.
-
-### 6. Dashboard
-#### Funcionalidades
-- **Visualização de Dados:**
-  - Mostrar saldo total previsto para o mês.
-  - Listar clientes inadimplentes.
-  - Mostrar saldo total recebido no mês.
-  - Gerar gráficos e relatórios visuais.
-
 ## Requisitos Funcionais
 
 1. **Gestão de Usuários:**
@@ -146,8 +94,6 @@ O sistema de gerenciamento de emissão de notas fiscais (NFs) é uma plataforma 
    - A lista de clientes inadimplentes deve ser atualizada em tempo real com base nos pagamentos recebidos.
    - O saldo total recebido deve ser atualizado diariamente.
 
-Este conjunto de funcionalidades, requisitos funcionais e não-funcionais, e regras de negócio, proporciona uma visão clara e abrangente do sistema, garantindo que ele atenda às necessidades operacionais e de negócio de maneira eficiente e segura.
-
 ## Fluxo de Trabalho
 
 1. **Criação de Usuário:** Admin cadastra novos usuários no sistema.
@@ -164,7 +110,3 @@ Este conjunto de funcionalidades, requisitos funcionais e não-funcionais, e reg
 - **Banco de Dados:** Relacional (PostgreSQL)
 - **Autenticação e Autorização:** JWT
 - **Relatórios:** Geração de relatórios em PDF e Excel
-
-## Conclusão
-
-Este sistema é projetado para simplificar e automatizar o processo de emissão e gestão de NFs, proporcionando uma ferramenta eficiente para administradores e uma visão clara das finanças para todos os usuários envolvidos.
