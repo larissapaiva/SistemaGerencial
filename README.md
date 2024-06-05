@@ -94,15 +94,6 @@ O sistema de gerenciamento de emissão de notas fiscais (NFs) é uma plataforma 
    - A lista de clientes inadimplentes deve ser atualizada em tempo real com base nos pagamentos recebidos.
    - O saldo total recebido deve ser atualizado diariamente.
 
-## Fluxo de Trabalho
-
-1. **Criação de Usuário:** Admin cadastra novos usuários no sistema.
-2. **Cadastro de Cliente:** Admin adiciona novos clientes e classifica-os como PF, PJ ou Offshore.
-3. **Cadastro de Serviços:** Admin cadastra os serviços oferecidos pela empresa.
-4. **Criação de Propostas:** Admin cria propostas indicando quando as próximas NFs devem ser emitidas.
-5. **Emissão de NFs:** Admin emite NFs para os clientes, aplicando juros automáticos para PJ.
-6. **Monitoramento no Dashboard:** Admin e Usuários Básicos monitoram saldo previsto, clientes inadimplentes e saldo recebido no mês.
-
 ## Requisitos Técnicos
 
 - **Backend:** API RESTful (Node.js)
