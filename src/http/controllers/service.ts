@@ -1,4 +1,4 @@
-import { UserAlreadyExistsError } from '@/use-cases/errors/user-already-exists-error'
+import { InvalidRegisterError } from '@/use-cases/errors/invalid-register-errors'
 
 import { makeServiceUseCase } from '@/use-cases/factories/make-service-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
@@ -17,7 +17,7 @@ export async function service(request: FastifyRequest, reply: FastifyReply) {
       description,
     })
   } catch (err) {
-    if (err instanceof UserAlreadyExistsError) {
+    if (err instanceof InvalidRegisterError) {
       return reply.status(409).send({ message: err.message })
     }
     throw err

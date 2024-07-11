@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { InMemoryServicesRepository } from '../repositories/in-memory/in-memory-services-repository'
-import { ServiceUseCase } from './services'
-import { InvalidServicesError } from './errors/invalid-service-errors'
+import { ServiceUseCase } from './service'
+import { InvalidRegisterError } from './errors/invalid-register-errors'
 
 let servicesRepository: InMemoryServicesRepository
 let sut: ServiceUseCase
@@ -19,10 +19,22 @@ describe('Service Use Case', () => {
   })
 
   it('should not be able to create service with empty description', async () => {
+    await expect(async () => {
+      await sut.execute({
+        description: '',
+      })
+    }).rejects.toBeInstanceOf(InvalidRegisterError)
+  })
+
+  it('should not be able to register with same description twice', async () => {
+    await sut.execute({
+      description: 'Serviços',
+    })
+
     await expect(() =>
       sut.execute({
-        description: '',
+        description: 'Serviços',
       }),
-    ).rejects.toBeInstanceOf(InvalidServicesError)
+    ).rejects.toBeInstanceOf(InvalidRegisterError)
   })
 })
