@@ -2,19 +2,21 @@
 
 ## Minimundo
 
-O Sistema de Gerenciamento de Emissão de Notas Fiscais é uma plataforma integrada que facilita a emissão, controle e acompanhamento de notas fiscais, proporcionando uma interface amigável e eficiente para empresas de diversos portes. Este sistema abrange funcionalidades como a criação de usuários com diferentes níveis de permissão, a gestão detalhada de clientes, a geração de propostas e a categorização de clientes em Pessoa Física (PF), Pessoa Jurídica (PJ) e Offshore. Além disso, inclui um robusto dashboard para o monitoramento de saldo e inadimplência, garantindo que os administradores tenham uma visão clara e precisa da saúde financeira da empresa.
+### Sistema de Gerenciamento de Emissão de Notas Fiscais
 
-No sistema, existem dois tipos principais de usuários: Administradores (Admin) e Usuários Básicos. Os Administradores possuem acesso total a todas as funcionalidades, incluindo a capacidade de gerenciar outros usuários, cadastrar e editar clientes, criar e aprovar propostas, emitir notas fiscais e visualizar relatórios detalhados no dashboard. Já os Usuários Básicos têm um conjunto de permissões mais restrito, podendo gerenciar clientes e criar propostas, mas sem acesso a certas funções administrativas e relatórios sensíveis.
+O Sistema de Gerenciamento de Emissão de Notas Fiscais é uma plataforma que facilita a emissão, controle e acompanhamento de notas fiscais, com uma interface amigável e eficiente. Ele permite a criação de usuários com diferentes permissões, a gestão detalhada de clientes, a geração de propostas e a categorização de clientes em Pessoa Física (PF), Pessoa Jurídica (PJ) e Offshore. O sistema inclui um dashboard para monitorar saldo e inadimplência, fornecendo uma visão clara da saúde financeira da empresa.
 
-O módulo de gestão de clientes permite o cadastro detalhado de clientes, coletando informações como nome, endereço, telefone, e-mail, e CPF/CNPJ. Cada cliente pode ser categorizado em Pessoa Física, Pessoa Jurídica ou Offshore, permitindo uma segmentação precisa e estratégias de atendimento específicas para cada tipo de cliente. A categorização facilita a aplicação de políticas de crédito e cobrança diferenciadas, além de permitir a personalização de propostas comerciais.
+Existem dois tipos de usuários: Administradores (Admin) e Usuários Básicos. Administradores têm acesso total, podendo gerenciar usuários, cadastrar e editar clientes, criar e aprovar propostas, emitir notas fiscais e visualizar relatórios. Usuários Básicos podem gerenciar clientes e criar propostas, mas não têm acesso a funções administrativas e relatórios sensíveis.
 
-Os usuários podem criar propostas detalhadas que incluem informações sobre produtos ou serviços oferecidos, preços, condições de pagamento e prazo de validade. As propostas podem ser editadas e revisadas antes da aprovação final. Uma vez aprovadas, as propostas podem ser automaticamente convertidas em notas fiscais, agilizando o processo de faturamento e reduzindo erros manuais.
+O módulo de gestão de clientes permite cadastrar clientes com informações detalhadas e categorizá-los em PF, PJ ou Offshore. A categorização facilita a aplicação de políticas de crédito e cobrança diferenciadas e a personalização de propostas.
 
-A emissão de notas fiscais é automatizada, garantindo conformidade com a legislação fiscal vigente. O sistema mantém um histórico completo de todas as notas fiscais emitidas, permitindo o acompanhamento do status de cada uma, seja pendente, paga, cancelada ou inadimplente. Este controle rigoroso assegura que a empresa mantenha uma visão clara sobre suas obrigações fiscais e recebíveis.
+Usuários podem criar propostas detalhadas com informações sobre produtos/serviços, preços, condições de pagamento e prazo de validade. As propostas podem ser editadas e revisadas antes da aprovação. Após aprovadas, são automaticamente convertidas em notas fiscais, agilizando o faturamento e reduzindo erros.
 
-O dashboard do sistema oferece uma visão em tempo real do saldo das notas fiscais emitidas, dos valores recebidos e das pendências. Acompanhando a inadimplência de maneira detalhada, o sistema gera relatórios e alertas sobre clientes inadimplentes, especificando os valores devidos e o tempo de atraso. Isso permite que a equipe financeira tome medidas proativas para a recuperação de créditos, minimizando impactos negativos no fluxo de caixa.
+O sistema mantém um histórico completo das notas fiscais emitidas, permitindo o acompanhamento de seu status (pendente, paga, cancelada ou inadimplente). Isso assegura uma visão clara das obrigações fiscais e recebíveis.
 
-Todas as informações sensíveis são criptografadas. Além disso, o sistema é projetado para estar em conformidade com todas as regulamentações fiscais vigentes, garantindo que as notas fiscais emitidas estejam sempre dentro das normas legais. Isso proporciona tranquilidade aos usuários, sabendo que seus processos fiscais estão sendo gerenciados de maneira segura e legalmente correta.
+O dashboard oferece uma visão em tempo real do saldo das notas fiscais, valores recebidos e pendências. Ele gera relatórios e alertas sobre inadimplência, permitindo ações proativas para a recuperação de créditos e minimizando impactos no fluxo de caixa.
+
+Todas as informações sensíveis são criptografadas. O sistema está em conformidade com as regulamentações fiscais, garantindo que as notas fiscais emitidas estejam dentro das normas legais, proporcionando segurança e tranquilidade aos usuários.
 
 ### Requisitos Funcionais do Sistema de Gerenciamento de Emissão de Notas Fiscais (NFs)
 
