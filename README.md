@@ -1,42 +1,80 @@
 # Documentação do Sistema de Gerenciamento de Emissão de Notas Fiscais (NFs)
 
-## Visão Geral
+## Minimundo
 
-O sistema de gerenciamento de emissão de notas fiscais (NFs) é uma plataforma que facilita a emissão, controle e acompanhamento de NFs. Este sistema permite a criação de usuários com diferentes níveis de permissão (Admin e Usuário Básico), a gestão de clientes, a criação de propostas e a categorização de clientes em PF, PJ e Offshore. Além disso, inclui um dashboard para monitoramento de saldo e inadimplência.
+### Sistema de Gerenciamento de Emissão de Notas Fiscais
 
-## Requisitos Funcionais
+O Sistema de Gerenciamento de Emissão de Notas Fiscais é uma plataforma que facilita a emissão, controle e acompanhamento de notas fiscais, com uma interface amigável e eficiente. Ele permite a criação de usuários com diferentes permissões, a gestão detalhada de clientes, a geração de propostas e a categorização de clientes em Pessoa Física (PF), Pessoa Jurídica (PJ) e Offshore. O sistema inclui um dashboard para monitorar saldo e inadimplência, fornecendo uma visão clara da saúde financeira da empresa.
 
-1. **Gestão de Usuários:**
-   - O sistema deve permitir o cadastro de novos usuários.
-   - O sistema deve permitir a edição e exclusão de usuários.
-   - O sistema deve permitir a autenticação de usuários com login e senha.
-   - O sistema deve diferenciar permissões entre usuários Admin e Usuário Básico.
+Existem dois tipos de usuários: Administradores (Admin) e Usuários Básicos. Administradores têm acesso total, podendo gerenciar usuários, cadastrar e editar clientes, criar e aprovar propostas, emitir notas fiscais e visualizar relatórios. Usuários Básicos podem gerenciar clientes e criar propostas, mas não têm acesso a funções administrativas e relatórios sensíveis.
 
-2. **Cadastro de Clientes:**
-   - O sistema deve permitir o cadastro de novos clientes.
-   - O sistema deve permitir a edição e exclusão de clientes.
-   - O sistema deve classificar clientes como PF, PJ ou Offshore.
+O módulo de gestão de clientes permite cadastrar clientes com informações detalhadas e categorizá-los em PF, PJ ou Offshore. A categorização facilita a aplicação de políticas de crédito e cobrança diferenciadas e a personalização de propostas.
 
-3. **Emissão de Notas Fiscais:**
-   - O sistema deve permitir a emissão de novas NFs pelo Admin.
-   - O sistema deve permitir a edição e exclusão de NFs.
-   - O sistema deve aplicar juros automaticamente para clientes PJ.
-   - O sistema deve gerar relatórios de NFs emitidas.
+Usuários podem criar propostas detalhadas com informações sobre produtos/serviços, preços, condições de pagamento e prazo de validade. As propostas podem ser editadas e revisadas antes da aprovação. Após aprovadas, são automaticamente convertidas em notas fiscais, agilizando o faturamento e reduzindo erros.
 
-4. **Propostas:**
-   - O sistema deve permitir a criação de novas propostas.
-   - O sistema deve permitir a edição e exclusão de propostas.
-   - O sistema deve associar propostas a clientes específicos.
+O sistema mantém um histórico completo das notas fiscais emitidas, permitindo o acompanhamento de seu status (pendente, paga, cancelada ou inadimplente). Isso assegura uma visão clara das obrigações fiscais e recebíveis.
 
-5. **Serviços Oferecidos:**
-   - O sistema deve permitir o cadastro de novos serviços.
-   - O sistema deve permitir a edição e exclusão de serviços.
+O dashboard oferece uma visão em tempo real do saldo das notas fiscais, valores recebidos e pendências. Ele gera relatórios e alertas sobre inadimplência, permitindo ações proativas para a recuperação de créditos e minimizando impactos no fluxo de caixa.
 
-6. **Dashboard:**
-   - O sistema deve mostrar o saldo total previsto para o mês.
-   - O sistema deve listar clientes inadimplentes.
-   - O sistema deve mostrar o saldo total recebido no mês.
-   - O sistema deve gerar gráficos e relatórios visuais.
+Todas as informações sensíveis são criptografadas. O sistema está em conformidade com as regulamentações fiscais, garantindo que as notas fiscais emitidas estejam dentro das normas legais, proporcionando segurança e tranquilidade aos usuários.
+
+### Requisitos Funcionais do Sistema de Gerenciamento de Emissão de Notas Fiscais (NFs)
+
+#### Gestão de Usuários
+1. **Cadastro de Usuários**:
+   - O sistema deve permitir o cadastro de novos usuários com informações como nome, e-mail, senha e nível de permissão (Admin ou Usuário Básico).
+   
+2. **Gerenciamento de Permissões**:
+   - O sistema deve permitir que apenas os Administradores alterem as permissões dos usuários.
+   - O sistema deve restringir o acesso dos Usuários Básicos às funcionalidades administrativas e relatórios sensíveis.
+
+#### Gestão de Clientes
+3. **Cadastro de Clientes**:
+   - O sistema deve permitir o cadastro de clientes com informações como nome, endereço, telefone, e-mail, e CPF/CNPJ.
+   - O sistema deve permitir a categorização dos clientes em Pessoa Física, Pessoa Jurídica ou Offshore.
+
+4. **Edição e Exclusão de Clientes**:
+   - O sistema deve permitir a edição das informações de clientes cadastrados.
+   - O sistema deve permitir a exclusão de clientes, com a verificação de que não há notas fiscais pendentes associadas.
+
+#### Criação e Gestão de Propostas
+5. **Criação de Propostas**:
+   - O sistema deve permitir a criação de propostas detalhadas contendo informações sobre produtos/serviços, preços, condições de pagamento e prazo de validade.
+   - O sistema deve permitir a edição e revisão das propostas antes da aprovação.
+
+6. **Conversão de Propostas em Notas Fiscais**:
+   - O sistema deve permitir que propostas aprovadas sejam automaticamente convertidas em notas fiscais.
+
+#### Emissão e Controle de Notas Fiscais
+7. **Emissão de Notas Fiscais**:
+   - O sistema deve permitir a emissão de notas fiscais a partir de propostas aprovadas, garantindo conformidade com a legislação fiscal vigente.
+   - O sistema deve gerar um histórico completo das notas fiscais emitidas, incluindo status como pendente, paga, cancelada e inadimplente.
+
+8. **Cancelamento de Notas Fiscais**:
+   - O sistema deve permitir o cancelamento de notas fiscais, seguindo os procedimentos legais apropriados.
+
+#### Dashboard e Monitoramento Financeiro
+9. **Visualização de Saldo e Pendências**:
+   - O sistema deve proporcionar um dashboard com a visualização em tempo real do saldo das notas fiscais emitidas, recebidas e pendentes.
+   
+10. **Acompanhamento de Inadimplência**:
+    - O sistema deve gerar relatórios e alertas sobre clientes inadimplentes, especificando os valores devidos e o tempo de atraso.
+
+#### Segurança e Conformidade
+11. **Segurança de Acesso**:
+    - O sistema deve implementar criptografia para dados sensíveis.
+
+12. **Conformidade Fiscal**:
+    - O sistema deve garantir que todas as notas fiscais emitidas estejam em conformidade com a legislação fiscal vigente.
+
+#### Relatórios
+13. **Geração de Relatórios**:
+    - O sistema deve permitir a geração de relatórios detalhados sobre clientes, propostas, notas fiscais emitidas, saldos e inadimplências.
+    
+#### Backup e Recuperação
+14. **Backup de Dados**:
+    - O sistema deve realizar backups periódicos dos dados.
+    - O sistema deve permitir a recuperação de dados a partir dos backups em caso de falhas.
 
 ## Requisitos Não-Funcionais
 
