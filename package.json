@@ -22,7 +22,7 @@
     "@vitest/coverage-v8": "1.6.0",
     "@vitest/ui": "1.6.0",
     "eslint": "8.57.0",
-    "prisma": "5.15.0",
+    "prisma": "5.17.0",
     "tsup": "8.0.2",
     "tsx": "4.10.4",
     "typescript": "5.4.5",
@@ -30,7 +30,7 @@
     "vitest": "1.6.0"
   },
   "dependencies": {
-    "@prisma/client": "5.15.0",
+    "@prisma/client": "5.17.0",
     "bcryptjs": "2.4.3",
     "cpf-cnpj-validator": "1.0.3",
     "dotenv": "16.4.5",

@@ -20,7 +20,7 @@ model User {
 model Client {
   id           String     @id @default(uuid())
   personType   PersonType @default(CORPORATE)
-  document     String
+  document     String?    @unique
   name         String?
   businessName String?
   address      String?
@@ -75,6 +75,7 @@ model installment {
 enum PersonType {
   INDIVIDUAL
   CORPORATE
+  OFFSHORE
 }
 
 enum PaymentType {

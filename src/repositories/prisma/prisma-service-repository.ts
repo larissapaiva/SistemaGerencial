@@ -1,10 +1,9 @@
 import { prisma } from '@/lib/prisma'
-import { Prisma } from '@prisma/client'
+import { Prisma, Service } from '@prisma/client'
 
 import { ServicesRepository } from '../services-repository'
 
 export class PrismaServiceRepository implements ServicesRepository {
-  /*
   async findById(id: string): Promise<Service | null> {
     const service = await prisma.service.findUnique({
       where: {
@@ -13,7 +12,6 @@ export class PrismaServiceRepository implements ServicesRepository {
     })
     return service
   }
-  */
 
   async findByDescribe(description: string) {
     const value = await prisma.service.findFirst({
