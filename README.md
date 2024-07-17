@@ -135,6 +135,5 @@ Todas as informações sensíveis são criptografadas. O sistema está em confor
 
 - **Backend:** API RESTful (Node.js)
 - **Frontend:** Interface Web Responsiva (React)
-- **Banco de Dados:** Relacional (PostgreSQL)
-- **Autenticação e Autorização:** JWT
+- **Banco de Dados:** Relacional (SQLite)
 - **Relatórios:** Geração de relatórios em PDF e Excel
